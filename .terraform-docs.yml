@@ -20,15 +20,15 @@ content: |-
   {{- end }}
 
   # Examples
+    ### Minimal
+    ```hcl
+    {{ include "examples/min/main.tf" }}
+    ```
     ### Full
     ```hcl
     {{ include "examples/full/main.tf" }}
     ```
 
-    ### Minimal
-    ```hcl
-    {{ include "examples/min/main.tf" }}
-    ```
 
 output:
   file: "README.md"

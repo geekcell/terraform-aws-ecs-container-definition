@@ -1,8 +1,26 @@
 /**
- * # Terraform AWS ECS Container Definition Module
+ * # Terraform AWS ECS Container Definition
  *
- * Module to create a valid ECS Container Definition for use with the AWS ECS Service. This module uses strict
- * HCL types and simplifies some of the more complex types such as `ulimits` and `environment`.
+ * Introducing the AWS ECS Container Definitions Terraform Module, a highly
+ * optimized solution for creating and managing your container definitions
+ * within Amazon Web Services. This module has been expertly crafted by our
+ * team, who have years of experience working with AWS and Terraform.
+ *
+ * We have taken the time to fine-tune the settings and configurations to
+ * provide you with the best possible experience when using this module. Our
+ * team is comprised of experts in AWS and Terraform, and we are proud to share
+ * our knowledge and expertise with you.
+ *
+ * This Terraform module offers a preconfigured solution for managing your
+ * container definitions, allowing you to focus on developing your applications
+ * and not on the infrastructure setup. By using this module, you can be
+ * confident that your container definitions are created and managed in a
+ * secure, scalable, and efficient manner.
+ *
+ * So, whether you're a seasoned AWS user or just starting out, the AWS ECS
+ * Container Definitions Terraform Module is the perfect solution for managing
+ * your container definitions. Give it a try and see the difference it can make
+ * in your workflow!
  */
 locals {
   # TODO: Filter out null values on the container definition.
