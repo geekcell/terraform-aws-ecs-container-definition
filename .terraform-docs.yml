@@ -22,7 +22,7 @@ content: |-
   # Examples
     ### Minimal
     ```hcl
-    {{ include "examples/min/main.tf" }}
+    {{ include "examples/basic-example/main.tf" }}
     ```
     ### Full
     ```hcl
