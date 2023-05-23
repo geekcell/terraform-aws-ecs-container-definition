@@ -117,10 +117,10 @@ No providers.
 # Examples
 ### Minimal
 ```hcl
-module "min" {
+module "basic-example" {
   source = "../../"
 
-  name  = "nginx"
+  name  = var.name
   image = "nginx:1.23-alpine"
 }
 ```
