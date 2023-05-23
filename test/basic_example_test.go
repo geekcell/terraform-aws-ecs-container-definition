@@ -1,16 +1,13 @@
 package test
 
 import (
-	"encoding/json"
-	"os"
-	"testing"
+  "encoding/json"
+  "os"
+  "testing"
 
-	TTAWS "github.com/gruntwork-io/terratest/modules/aws"
-	"github.com/gruntwork-io/terratest/modules/terraform"
+  "github.com/gruntwork-io/terratest/modules/terraform"
 
-	"github.com/stretchr/testify/assert"
-
-	"github.com/aws/aws-sdk-go/aws/session"
+  "github.com/stretchr/testify/assert"
 )
 
 type TaskDefinitionSimple struct {
@@ -50,15 +47,6 @@ func TestTerraformBasicExample(t *testing.T) {
 	assert.Equal(t, 0, definitionJson.Cpu)
 	assert.True(t, definitionJson.Essential)
 	assert.Empty(t, definitionJson.PortMappings)
-}
-
-func NewSession(region string) (*session.Session, error) {
-	sess, err := TTAWS.NewAuthenticatedSession(region)
-	if err != nil {
-		return nil, err
-	}
-
-	return sess, nil
 }
 
 func GetShortId() string {

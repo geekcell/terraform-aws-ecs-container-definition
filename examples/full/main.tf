@@ -1,7 +1,7 @@
 module "full" {
   source = "../../"
 
-  name      = "nginx"
+  name      = var.name
   image     = "nginx:latest"
   essential = true
 
