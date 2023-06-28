@@ -1,9 +1,9 @@
 output "json" {
   description = "Rendered container definition as JSON output."
-  value       = jsonencode(local.final_container_definition)
+  value       = data.jq_query.main.result
 }
 
 output "hcl" {
   description = "Rendered container definition as HCL object."
-  value       = local.final_container_definition
+  value       = jsondecode(data.jq_query.main.result)
 }

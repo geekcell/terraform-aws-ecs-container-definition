@@ -1,29 +1,9 @@
 /**
  * # Terraform AWS ECS Container Definition
  *
- * Introducing the AWS ECS Container Definitions Terraform Module, a highly
- * optimized solution for creating and managing your container definitions
- * within Amazon Web Services. This module has been expertly crafted by our
- * team, who have years of experience working with AWS and Terraform.
- *
- * We have taken the time to fine-tune the settings and configurations to
- * provide you with the best possible experience when using this module. Our
- * team is comprised of experts in AWS and Terraform, and we are proud to share
- * our knowledge and expertise with you.
- *
- * This Terraform module offers a preconfigured solution for managing your
- * container definitions, allowing you to focus on developing your applications
- * and not on the infrastructure setup. By using this module, you can be
- * confident that your container definitions are created and managed in a
- * secure, scalable, and efficient manner.
- *
- * So, whether you're a seasoned AWS user or just starting out, the AWS ECS
- * Container Definitions Terraform Module is the perfect solution for managing
- * your container definitions. Give it a try and see the difference it can make
- * in your workflow!
+ * This module is used to generate a container definition for use in an AWS ECS task definition.
  */
 locals {
-  # TODO: Filter out null values on the container definition.
   container_definition = {
     name      = var.name
     image     = var.image
@@ -127,15 +107,11 @@ locals {
       credentialsParameter : var.repository_credentials
     } : null
   }
+}
 
-  filtered_container_definition = { for k, v in local.container_definition : k => v if v != null && v != [] }
-  filtered_port_mappings        = [for pm in local.container_definition.portMappings : { for k, v in pm : k => v if v != null && v != [] }]
-
-  # Merge all filtered values into one definition
-  final_container_definition = merge(
-    local.filtered_container_definition,
-    {
-      portMappings = local.filtered_port_mappings
-    }
-  )
+# AWS will complain if we send any optional values with a null value. A simple way to get around this is to use jq
+# to remove any null values and empty arrays from the JSON before sending it to AWS.
+data "jq_query" "main" {
+  query = "del(.. | nulls) | del(.. | select(. == []))"
+  data  = jsonencode(local.container_definition)
 }
