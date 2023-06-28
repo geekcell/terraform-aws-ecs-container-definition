@@ -24,9 +24,14 @@ content: |-
   {{- end }}
 
   # Examples
-    ### Basic Example
+    ### Min
     ```hcl
     {{ include "examples/basic-example/main.tf" }}
+    ```
+
+    ### Full
+    ```hcl
+    {{ include "examples/full/main.tf" }}
     ```
 
 output:
